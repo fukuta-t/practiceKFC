@@ -17,10 +17,6 @@ struct Watermark: ViewModifier {
             content
             Text(text)
                 .font(.system(size: 12, weight: .black, design: .default))
-            //                .font(.callout)
-            //                .foregroundColor(.white)
-            //                .padding(5)
-            //                .background(Color.black)
         }
     }
 }
@@ -36,41 +32,46 @@ struct ContentView: View {
     @State var isShowModal = false
     
     var body: some View {
-        VStack{
-            // navigation
-            NavigationView {
-                NavigationLink(destination: Text("aa")) {
-                    Text("")
-                }
-                .navigationBarTitle("KFC", displayMode: .inline)
-                .background(Color.red)
-                .navigationBarItems(trailing:
-                    HStack {
-                        Button(action: {
-                            self.isShowModal.toggle()
-                        }){
-                            Image("bell")
-                                .frame(width: 44, height: 44, alignment: .center)
-                                .watermarked(text: "お知らせ")
-                        }.sheet(isPresented: self.$isShowModal) {
-                            ModalView()
-                        }
-                        
-                        Button(action: {
-                            self.isShowModal.toggle()
-                        }){
-                            Image("search")
-                                .frame(width: 44, height: 44, alignment: .center)
-                                .watermarked(text: "店舗検索")
-                        }.sheet(isPresented: self.$isShowModal) {
-                            ModalView()
-                        }
+        // 画面サイズの取得
+        GeometryReader { geometry in
+            VStack{
+                // navigation
+                NavigationView {
+                    NavigationLink(destination: Text("aa")) { Text("")
                     }
-                )
+                    .navigationBarTitle("KFC", displayMode: .inline)
+                    .background(Color.red)
+                    .navigationBarItems(trailing:
+                        HStack {
+                            Button(action: {
+                                self.isShowModal.toggle()
+                            }){
+                                Image(systemName:"bell")
+                                    .foregroundColor(.white)
+                                    .frame(width: 44, height: 44, alignment: .center)
+                                    .watermarked(text: "お知らせ")
+                            }.sheet(isPresented: self.$isShowModal) {
+                                ModalView()
+                            }
+                            
+                            Button(action: {
+                                self.isShowModal.toggle()
+                            }){
+                                // ToDo:画像読み込めない問題。　assetにはある
+                                // No image named 'search' found in asset catalog for main bundle
+                                Image(systemName:"search")
+                                    .frame(width: 44, height: 44, alignment: .center)
+                                    .scaledToFit()
+                                    .watermarked(text: "店舗検索")
+                            }.sheet(isPresented: self.$isShowModal) {
+                                ModalView()
+                            }
+                        })
+                }
+                .frame(width: geometry.size.width, height: 44, alignment: .center)
+                
+                TabBarControllerView()
             }
-            .frame(width: 375, height: 44, alignment: .center)
-            
-            TabBarControllerView()
         }
     }
 }
@@ -81,6 +82,7 @@ struct ContentView_Previews: PreviewProvider {
     }
 }
 
+// お知らせで表示するModal
 struct ModalView : View {
     var body: some View {
         Text("modalView")

@@ -9,8 +9,23 @@
 import SwiftUI
 
 struct CouponView: View {
+    @State private var selectedIndex = 0
+
     var body: some View {
-        Text("CouponView")
+        VStack {
+              Picker("", selection: self.$selectedIndex) {
+                      Text("通常")
+                          .tag(0)
+                      Text("スペシャル")
+                          .tag(1)
+                      Text("お気に入り")
+                          .tag(2)
+                  }
+                  .pickerStyle(SegmentedPickerStyle())
+            ScrollView{
+                Text("aaaa")
+            }
+        }
     }
 }
 
