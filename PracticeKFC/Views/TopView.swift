@@ -44,31 +44,45 @@ struct ChickenMileView: View {
     // 例としてオブジェクトの高さが36しかなかったらView本体も36になる
     // プロパティの設定順を間違えるとレイアウトがめちゃめちゃ変わる
     var body: some View {
-        HStack {
+        ZStack {
             Text("")
-                .frame(width: 0, height: 60, alignment: .center)
+                .frame(width: 414, height: 60, alignment: .center)
                 .background(Color(red: 0.827, green: 0.929, blue: 0.984, opacity: 1.0))
-            Text(" 現在のチキンマイル")
-                .font(.system(size: 10, weight: .black, design: .default))
-                .frame(width: 180, height: 40, alignment: .center)
-                .background(Color.white)
-                .offset(x: 30, y: 0)
-            Text("900")
-                .frame(width: 130, height: 40, alignment: .center)
-                .background(Color.white)
-                .offset(x: 20, y: 0)
+            HStack(spacing: 0) {
+                Text(" 現在のチキンマイル")
+                    .font(.system(size: 10, weight: .black, design: .default))
+                    .offset(x: 20, y: 0)
+                    .frame(width: 180, height: 40, alignment: .leading)
+                    .background(Color.white)
+                Text("900")
+                    .frame(width: 130, height: 40)
+                    .offset(x: 20, y: 0)
+                    .background(Color.white)
+            }
+            .offset(x: -20, y: 0)
+
             Image("bell")
-                .frame(width: 40, height: 40, alignment: .center)
+                .frame(width: 35, height: 35, alignment: .center)
                 .background(Color.orange)
                 .cornerRadius(20.0)
-                .offset(x: -310, y: 0)
-            Text("マイページ\n確認")
-                .foregroundColor(Color.white)
-                .font(.system(size: 10, weight: .black, design: .default))
-                .frame(width: 60, height: 36, alignment: .center)
-                .background(Color.red)
-                .cornerRadius(20.0)
-                .offset(x: -50, y: 0)
+                .offset(x: -180, y: 0)
+            Button(action: {
+                
+            }){
+                HStack(spacing: 0) {
+                    Text("マイページ\n確認")
+                        .multilineTextAlignment(.center)
+                        .font(.system(size: 9, weight: .black, design: .default))
+                        .foregroundColor(Color.white)
+                    Text("▶︎")
+                        .font(.system(size: 9, weight: .black, design: .default))
+                        .foregroundColor(Color.white)
+                }
+            }
+            .frame(width: 60, height: 42, alignment: .center)
+            .background(Color.red)
+            .cornerRadius(20.0)
+            .offset(x: 150, y: 0)
         }
     }
 }
