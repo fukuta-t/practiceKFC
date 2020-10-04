@@ -22,11 +22,18 @@ struct MenuView: View {
     
     var body: some View {
         List (items) { item in
-            Image("\(item.image)")
-                .frame(width: 44, height: 44, alignment: .center)
-            Text("\(item.name)")
-            Spacer()
-            Text("●")
+            // 後でRowクラス作成してDelegate切る
+            Button(action: {
+                print("\(item.id)番目押した")
+            }, label:{
+                HStack {
+                    Image("\(item.image)")
+                        .frame(width: 44, height: 44, alignment: .center)
+                    Text("\(item.name)")
+                    Spacer()
+                    Text("●")
+                }
+            }).background(Color.green)
         }
     }
 }
