@@ -42,8 +42,9 @@ struct CouponView: View {
             ScrollView{
                 CouponTicketView()
             }
+            // Constaintを設定してフッターに接地させる
             QRCodeView()
-                .padding(.bottom)
+                .padding(EdgeInsets(top: 0, leading: 0, bottom: -9, trailing: 0))
         }
     }
     
