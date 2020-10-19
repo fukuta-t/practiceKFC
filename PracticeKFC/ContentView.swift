@@ -8,6 +8,25 @@
 
 import SwiftUI
 
+// jsonファイル読み込みの機能拡張
+extension Bundle {
+    func decodeJSON<T: Codable>(_ file: String) -> T {
+        guard let url = self.url(forResource: file, withExtension: nil) else {
+            fatalError("Faild to locate \(file) in bundle.")
+        }
+        
+        guard let data = try? Data(contentsOf: url) else {
+            fatalError("Failed to load \(file) from bundle.")
+        }
+        
+        let decoder = JSONDecoder()
+        guard let loaded = try? decoder.decode(T.self, from: data) else {
+            fatalError("Failed to decode \(file) from bundle.")
+        }
+        return loaded
+    }
+}
+
 // NavigationBarのカスタムModifier
 struct Watermark: ViewModifier {
     var text: String

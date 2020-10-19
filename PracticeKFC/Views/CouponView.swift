@@ -7,9 +7,18 @@
 //
 
 import SwiftUI
+struct couponContents: Codable {
+    var id: String
+    var image: String
+    var name: String
+}
 
 struct CouponView: View {
+    // この型名はデータごとのモデルに合わせる //モデルの型はCodable
+    let couponItems: [couponContents] = Bundle.main.decodeJSON("coupon.json")
+
     @State private var selectedIndex = 0
+    @State private var isCouponState = false
     
     var body: some View {
         VStack {
@@ -35,12 +44,18 @@ struct CouponView: View {
                         1. ボタンのアイコンが入れ替わる。
                         2. コレクションビューの表示がリストからボックスになる
                      */
+                    self.isCouponState = !self.isCouponState
                 }) {
                     Image("viewIcon")
                 }
             }
+            
             ScrollView{
-                CouponTicketView()
+                List {
+                    ForEach (0..<couponItems.count) { row in
+                        CouponTicketView()
+                    }
+                }
             }
             // Constaintを設定してフッターに接地させる
             QRCodeView()
