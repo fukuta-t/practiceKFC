@@ -1,0 +1,20 @@
+[
+    {
+        "id":"0",
+        "infoDate":"2020/10/21",
+        "isOpenDocument":"bell",
+        "infoTitle":"クーポン1"
+    },
+    {
+        "id":"1",
+        "infoDate":"2020/10/20",
+        "isOpenDocument":"bell",
+        "infoTitle":"クーポン2"
+    },
+    {
+        "id":"2",
+        "infoDate":"2020/10/19",
+        "isOpenDocument":"bell",
+        "infoTitle":"クーポン3"
+    }
+]

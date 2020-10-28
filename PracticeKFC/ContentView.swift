@@ -49,7 +49,9 @@ extension View {
 
 struct ContentView: View {
     @State var isShowModal = false
-    
+    // お知らせModalDissmiss用
+    @Environment(\.presentationMode) var presentationMode
+
     var body: some View {
         // 画面サイズの取得
         GeometryReader { geometry in
@@ -59,7 +61,7 @@ struct ContentView: View {
                     NavigationLink(destination: Text("aa")) { Text("")
                     }
                     .navigationBarTitle("KFC", displayMode: .inline)
-                    .background(Color.red)
+                    .background(Color.white)
                     .navigationBarItems(trailing:
                         HStack {
                             Button(action: {
@@ -70,7 +72,7 @@ struct ContentView: View {
                                     .frame(width: 44, height: 44, alignment: .center)
                                     .watermarked(text: "お知らせ")
                             }.sheet(isPresented: self.$isShowModal) {
-                                ModalView()
+                                InformationView()
                             }
                             
                             Button(action: {
@@ -83,7 +85,7 @@ struct ContentView: View {
                                     .scaledToFit()
                                     .watermarked(text: "店舗検索")
                             }.sheet(isPresented: self.$isShowModal) {
-                                ModalView()
+                                InformationView()
                             }
                         })
                 }
@@ -98,13 +100,6 @@ struct ContentView: View {
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
-    }
-}
-
-// お知らせで表示するModal
-struct ModalView : View {
-    var body: some View {
-        Text("modalView")
     }
 }
 
