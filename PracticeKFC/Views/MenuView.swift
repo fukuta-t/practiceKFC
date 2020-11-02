@@ -8,13 +8,13 @@
 
 import SwiftUI
 
-struct MenuItems: Identifiable {
+struct MenuItems: Codable {
     var id: String
     var image: String
     var name: String
 }
 
-struct MenuCategories: Identifiable {
+struct MenuCategories: Codable {
     var id: String
     var image: String
     var name: String
@@ -22,31 +22,15 @@ struct MenuCategories: Identifiable {
 }
 
 struct MenuView: View {
-    var items = [
-        MenuCategories(id:"0", image:"bell", name:"骨なしA",
-                 childs:[
-                    MenuItems(id:"0", image:"bell", name:"骨なし1"),
-                    MenuItems(id:"0", image:"bell", name:"骨なし2"),
-                    MenuItems(id:"0", image:"bell", name:"骨なし3")]),
-        MenuCategories(id:"1", image:"bell", name:"クリスピー",
-                 childs:[
-                    MenuItems(id:"0", image:"bell", name:"骨なしa"),
-                    MenuItems(id:"0", image:"bell", name:"骨なしb"),
-                    MenuItems(id:"0", image:"bell", name:"骨なしc")]),
-        MenuCategories(id:"2", image:"bell", name:"オリジナルチキン",
-                 childs:[
-                    MenuItems(id:"0", image:"bell", name:"骨あり1"),
-                    MenuItems(id:"0", image:"bell", name:"骨あり2"),
-                    MenuItems(id:"0", image:"bell", name:"骨あり3")
-        ])
-    ]
-    
+    let items:[MenuCategories] = Bundle.main.decodeJSON("menu.json")
+        
     @State var expanded:[Int:Bool] = [:]
     
     func isExpanded(_ id:Int) -> Bool {
         expanded[id] ?? false
     }
     
+    // 選択時はコレクションView表示する。　商品名選択でPush遷移
     var body: some View {
         List {
             ForEach((0..<items.count), id: \.self) { row in
@@ -64,6 +48,8 @@ struct MenuView: View {
                 }
             }
         }
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
+        .edgesIgnoringSafeArea(.all)
     }
 }
 

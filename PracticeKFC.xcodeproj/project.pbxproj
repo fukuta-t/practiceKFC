@@ -24,6 +24,7 @@
 		2B942B3625456A780008952A /* InformationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B942B3525456A780008952A /* InformationView.swift */; };
 		2B942B38254574800008952A /* information.json in Resources */ = {isa = PBXBuildFile; fileRef = 2B942B37254574800008952A /* information.json */; };
 		2B942B3B254576A00008952A /* CouponTicketView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B942B3A254575AE0008952A /* CouponTicketView.swift */; };
+		2B942B62254EF6D60008952A /* menu.json in Resources */ = {isa = PBXBuildFile; fileRef = 2B942B61254EF6D60008952A /* menu.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -46,6 +47,7 @@
 		2B942B3525456A780008952A /* InformationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InformationView.swift; sourceTree = "<group>"; };
 		2B942B37254574800008952A /* information.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = information.json; sourceTree = "<group>"; };
 		2B942B3A254575AE0008952A /* CouponTicketView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CouponTicketView.swift; sourceTree = "<group>"; };
+		2B942B61254EF6D60008952A /* menu.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = menu.json; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -117,6 +119,7 @@
 		2B942B2F253C32740008952A /* jsons */ = {
 			isa = PBXGroup;
 			children = (
+				2B942B61254EF6D60008952A /* menu.json */,
 				2B942B32253C3E230008952A /* coupon.json */,
 				2B942B37254574800008952A /* information.json */,
 			);
@@ -198,6 +201,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2B942B62254EF6D60008952A /* menu.json in Resources */,
 				2B942B172519F9880008952A /* LaunchScreen.storyboard in Resources */,
 				2B942B38254574800008952A /* information.json in Resources */,
 				2B942B142519F9880008952A /* Preview Assets.xcassets in Resources */,
