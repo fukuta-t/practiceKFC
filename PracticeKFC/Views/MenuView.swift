@@ -35,14 +35,24 @@ struct MenuView: View {
         List {
             ForEach((0..<items.count), id: \.self) { row in
                 Section(header:
-                    Text("\(self.items[row].name)").onTapGesture {
-                        self.expanded[row] = !self.isExpanded(row)
-                }
-                    .frame(height: 44)
+                    HStack {
+                        Image(self.items[row].childs[0].image)
+                            .resizable()
+                            .frame(width: 40, height: 40, alignment: .leading)
+                        Text("\(self.items[row].name)").onTapGesture {
+                            self.expanded[row] = !self.isExpanded(row)
+                        }
+                        .frame(height: 44)
+                    }
                 ) {
                     if self.isExpanded(row) {
                         ForEach((0..<self.items[row].childs.count), id: \.self) { row2 in
-                            Text("\(self.items[row].childs[row2].name)")
+                            HStack {
+                                Image(self.items[row].childs[row2].image)
+                                    .resizable()
+                                    .frame(width: 40, height: 40, alignment: .leading)
+                                Text("\(self.items[row].childs[row2].name)")
+                            }
                         }
                     }
                 }

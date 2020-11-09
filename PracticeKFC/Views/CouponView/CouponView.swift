@@ -28,21 +28,21 @@ struct CouponView: View {
                  非選択色はベース白　文字灰
                  */
                 Picker("", selection: self.$selectedIndex) {
-                        Text("通常")
-                            .tag(0)
-                        Text("スペシャル")
-                            .tag(1)
-                        Text("お気に入り")
-                            .tag(2)
-                    }
+                    Text("通常")
+                        .tag(0)
+                    Text("スペシャル")
+                        .tag(1)
+                    Text("お気に入り")
+                        .tag(2)
+                }
                     // コンテンツの高さ変更機能がない。ラッピングして対応？
                     .frame(width: 300, height: 30, alignment: .leading)
                     .pickerStyle(SegmentedPickerStyle())
-                    
+                
                 Button (action: {
                     /*
-                        1. ボタンのアイコンが入れ替わる。
-                        2. コレクションビューの表示がリストからボックスになる
+                     1. ボタンのアイコンが入れ替わる。
+                     2. コレクションビューの表示がリストからボックスになる
                      */
                     self.isCouponState = !self.isCouponState
                 }) {
@@ -53,13 +53,14 @@ struct CouponView: View {
             ScrollView{
                 List {
                     ForEach (0..<couponItems.count) { row in
-                        CouponTicketView()
+                        CouponTicketView(couponItems: self.couponItems)
                     }
                 }
             }
             // Constaintを設定してフッターに接地させる
             QRCodeView()
                 .padding(EdgeInsets(top: 0, leading: 0, bottom: -9, trailing: 0))
+                .frame(maxWidth: .infinity, maxHeight: 100)
         }
     }
     
@@ -83,7 +84,6 @@ struct CouponView: View {
             .foregroundColor: selectedColor.cgColor,
         ], for: .selected)
     }
-
 }
 
 struct CouponView_Previews: PreviewProvider {
@@ -99,19 +99,18 @@ struct QRCodeView: View {
             VStack(alignment: .leading) {
                 Text("会員証")
                     .fontWeight(.heavy)
-                Text("お会計時にレジににてQRコードを\n店員に見せてください")
-                    .lineLimit(1)
+                Text("お会計時にレジにてQRコードを\n店員に見せてください")
+                    .frame(height: 50)
+                    .lineLimit(2)
                 Text("※タップすると拡大されます")
                     .foregroundColor(.red)
-            }
-           Text("QR")
-            .frame(width: 80, height: 80, alignment: .center)
-//            .background(Color.yellow)
+            }.frame(maxWidth: .infinity, maxHeight: 120)
+            Text("QR")
+                .frame(width: 80, height: 80, alignment: .center)
         }
-            // 色がなんか変だけどとりあえず放置
             // #fffacd
             .background(Color(red: 0.700, green: 0.680, blue: 0.654, opacity: 1.0))
-            .frame(width: 414, height: 100)
+//            .frame(maxWidth: .infinity, maxHeight: .infinity)
     }
 }
 

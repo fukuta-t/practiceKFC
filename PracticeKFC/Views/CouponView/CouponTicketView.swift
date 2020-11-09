@@ -9,6 +9,7 @@
 import SwiftUI
 
 struct CouponTicketView: View {
+    var couponItems:[couponContents]
     var body: some View {
         VStack {
             Image("couponContent")
@@ -29,17 +30,11 @@ struct CouponTicketView: View {
                     print("インフォメーション押した")
                 }) {
                     Text("◇")
-                    Image("information")
+                    Image("nCoupon1")
                 }
             }
             .background(Color.white)
         }
         .background(Color.blue)
-    }
-}
-
-struct CouponTicketView_Previews: PreviewProvider {
-    static var previews: some View {
-        CouponTicketView()
     }
 }
