@@ -1,17 +1,17 @@
 [
     {
         "id":"0",
-        "image":"nCoupon1.png",
+        "image":"nCoupon1",
         "name":"クーポン1"
     },
     {
         "id":"1",
-        "image":"nCoupon2.png",
+        "image":"nCoupon2",
         "name":"クーポン2"
     },
     {
         "id":"2",
-        "image":"nCoupon3.png",
+        "image":"nCoupon3",
         "name":"クーポン3"
     }
 ]

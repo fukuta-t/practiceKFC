@@ -1,16 +1,16 @@
 [
     {
         "id":"0",
-        "image":"oMenu1.png",
+        "image":"oMenu1",
         "name":"期間限定",
         "childs":[
             {
                 "id":"0",
-                "image":"oMenu1.png",
+                "image":"oMenu1",
                 "name":"トリュフ香るクリーミーリッチサンド"
             },{
                 "id":"1",
-                "image":"oMenu2.png",
+                "image":"oMenu2",
                 "name":"クリーミーリッチサンドセット"
             },{
                 "id":"2",

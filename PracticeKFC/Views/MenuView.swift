@@ -38,6 +38,7 @@ struct MenuView: View {
                     HStack {
                         Image(self.items[row].childs[0].image)
                             .resizable()
+                            .scaledToFit()
                             .frame(width: 40, height: 40, alignment: .leading)
                         Text("\(self.items[row].name)").onTapGesture {
                             self.expanded[row] = !self.isExpanded(row)
@@ -50,6 +51,7 @@ struct MenuView: View {
                             HStack {
                                 Image(self.items[row].childs[row2].image)
                                     .resizable()
+                                .scaledToFit()
                                     .frame(width: 40, height: 40, alignment: .leading)
                                 Text("\(self.items[row].childs[row2].name)")
                             }
