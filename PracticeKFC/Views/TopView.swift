@@ -8,25 +8,33 @@
 
 import SwiftUI
 
+struct TopItems: Codable {
+    var id: String
+    var image: String
+    var name: String
+}
+
 struct TopView: View {
+    let itemA:[TopItems] = Bundle.main.decodeJSON("top.json")
+    
     var body: some View {
         VStack{
-            ScrollView(.vertical, showsIndicators: false) {
-                Text("おすすめ商品エリア")
-                    .frame(width: 340, height: 80, alignment: .center)
-                    .background(Color.yellow)
-                    .padding(.all)
-                // マイル表示エリア
-                ChickenMileView()
-                    .background(Color(red: 0.827, green: 0.929, blue: 0.984, opacity: 1.0))
-                Text("広告エリア")
-                    .frame(width: 340, height: 80, alignment: .center)
-                    .background(Color.green)
-                    .padding(.horizontal)
-                Text("広告エリア")
-                    .frame(width: 340, height: 80, alignment: .center)
-                    .background(Color.green)
-                    .padding()
+            Image("kikan")
+                .resizable()
+                .scaledToFill()
+                .frame(width: 400, height: 170)
+                        
+            // マイル表示エリア
+            ChickenMileView()
+                .background(Color(red: 0.827, green: 0.929, blue: 0.984, opacity: 1.0))
+            List {
+                ForEach((0..<itemA.count), id: \.self) { row in
+                    Image("\(self.itemA[row].image)")
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: 370, height: 170)
+                        .clipped()
+                }.frame(height: 170)
             }
         }
     }
@@ -60,7 +68,7 @@ struct ChickenMileView: View {
                     .background(Color.white)
             }
             .offset(x: -20, y: 0)
-
+            
             Image("bell")
                 .frame(width: 35, height: 35, alignment: .center)
                 .background(Color.orange)

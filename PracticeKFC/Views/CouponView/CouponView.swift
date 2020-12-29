@@ -46,17 +46,20 @@ struct CouponView: View {
                      */
                     self.isCouponState = !self.isCouponState
                 }) {
-                    Image("viewIcon")
+//                    Image("kikan")
+//                        .resizable()
+//                        .scaledToFill()
+//                        .frame(width: 400, height: 170)
                 }
             }
             
-            ScrollView{
+//            ScrollView{
                 List {
-                    ForEach (0..<couponItems.count) { row in
-                        CouponTicketView(couponItems: self.couponItems)
+                    ForEach ((0..<couponItems.count), id: \.self) { row in
+                        CouponTicketView(couponItem: self.couponItems[row])
                     }
                 }
-            }
+//            }
             // Constaintを設定してフッターに接地させる
             QRCodeView()
                 .padding(EdgeInsets(top: 0, leading: 0, bottom: -9, trailing: 0))

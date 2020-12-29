@@ -1,0 +1,27 @@
+[
+    {
+        "id":"0",
+        "image":"kikan",
+        "name":"クーポン1"
+    },
+    {
+        "id":"1",
+        "image":"recommended1",
+        "name":"クーポン2"
+    },
+    {
+        "id":"2",
+        "image":"recommended2",
+        "name":"クーポン3"
+    },
+    {
+        "id":"3",
+        "image":"net_order",
+        "name":"クーポン3"
+    },
+    {
+        "id":"4",
+        "image":"recruit",
+        "name":"クーポン3"
+    }
+]

@@ -9,14 +9,18 @@
 import SwiftUI
 
 struct CouponTicketView: View {
-    var couponItems:[couponContents]
+    var couponItem:couponContents
     var body: some View {
         VStack {
-            Image("couponContent")
-                .background(Color.red)
-                .frame(width: 380, height: 130, alignment: .center)
+            Image(couponItem.image)
+                .resizable()
+                .scaledToFill()
+                .frame(width: 340, height: 230)
+
+//                .background(Color.red)
+//                .frame(width: 380, height: 130, alignment: .center)
             HStack{
-                Image("favorite")
+//                Image("bell")
                 Button(action: {
                     print("お気に入り押した")
                 }) {
@@ -25,15 +29,19 @@ struct CouponTicketView: View {
                 .frame(width: 300, height: 40)
                 Text(" ")
                     .background(Color.gray)
-                    .frame(width: 1, height: 80)
+                    .frame(width: 1, height: 40)
                 Button(action: {
                     print("インフォメーション押した")
                 }) {
                     Text("◇")
-                    Image("nCoupon1")
+//                    Image("nCoupon1")
+//                        .resizable()
+//                        .scaledToFill()
+//                        .frame(width: 380, height: 130)
                 }
+                .frame(width: 40, height: 40)
             }
-            .background(Color.white)
+            .background(Color.green)
         }
         .background(Color.blue)
     }
