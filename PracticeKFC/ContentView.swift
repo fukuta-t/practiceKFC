@@ -27,6 +27,16 @@ extension Bundle {
     }
 }
 
+extension UIImage {
+    func resized(toWidth width: CGFloat) -> UIImage? {
+        let canvasSize = CGSize(width: width, height: CGFloat(ceil(width/size.width * size.height)))
+        UIGraphicsBeginImageContextWithOptions(canvasSize, false, scale)
+        defer { UIGraphicsEndImageContext() }
+        draw(in: CGRect(origin: .zero, size: canvasSize))
+        return UIGraphicsGetImageFromCurrentImageContext()
+    }
+}
+
 // NavigationBarのカスタムModifier
 struct Watermark: ViewModifier {
     var text: String
@@ -110,24 +120,39 @@ struct TabBarControllerView: UIViewControllerRepresentable {
         
         let vc1 = UIHostingController(rootView: TopView())
         vc1.tabBarItem = UITabBarItem(title: "Top", image: UIImage(named: "tab-icon-sample"), tag: 1)
-        
+        var image = UIImage(named: "tabIcon1")
+        image = image?.resized(toWidth: 30)
+        vc1.tabBarItem!.image = image?.withRenderingMode(.alwaysOriginal)
+
         let vc2 = UIHostingController(rootView: MenuView())
+        image = UIImage(named: "tabIcon2")
+        image = image?.resized(toWidth: 30)
         vc2.tabBarItem = UITabBarItem(title: "メニュー", image: UIImage(named: "tab-icon-sample"), tag: 2)
-        
+        vc2.tabBarItem!.image = image?.withRenderingMode(.alwaysOriginal)
+
         let vc3 = UIHostingController(rootView: CouponView())
+        image = UIImage(named: "tabIcon3")
+        image = image?.resized(toWidth: 30)
         vc3.tabBarItem = UITabBarItem(title: "クーポン", image: UIImage(named: "tab-icon-sample"), tag: 3)
+        vc3.tabBarItem!.image = image?.withRenderingMode(.alwaysOriginal)
         
         let vc4 = UIHostingController(rootView: MyPageView())
+        image = UIImage(named: "tabIcon4")
+        image = image?.resized(toWidth: 30)
         vc4.tabBarItem = UITabBarItem(title: "マイページ", image: UIImage(named: "tab-icon-sample"), tag: 4)
+        vc4.tabBarItem!.image = image?.withRenderingMode(.alwaysOriginal)
         
         let vc5 = UIHostingController(rootView: MemberIdView())
+        image = UIImage(named: "tabIcon5")
+        image = image?.resized(toWidth: 30)
         vc5.tabBarItem = UITabBarItem(title: "会員証", image: UIImage(named: "tab-icon-sample"), tag: 5)
+        vc5.tabBarItem!.image = image?.withRenderingMode(.alwaysOriginal)
         
         let vcs = [vc1, vc2, vc3, vc4, vc5]
         controller.setViewControllers(vcs, animated: true)
         return controller
     }
-    
+        
     func updateUIViewController(_ uiViewController: UITabBarController, context: Context) {
     }
 }

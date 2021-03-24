@@ -67,14 +67,11 @@ struct InformationView: View {
                         // メールアイコン
                         Image("bell.png")
                             .frame(maxWidth: 55, maxHeight: 70)
-                            .background(Color.yellow)
                         VStack {
                             Text("\(self.Informations[row].infoDate)")
                                 .frame(maxWidth: 300, maxHeight: 20, alignment: .topLeading)
-                                .background(Color.blue)
                             Text("\(self.Informations[row].infoTitle)")
                                 .frame(maxWidth: 300, maxHeight: 50, alignment: .topLeading)
-                                .background(Color.green)
                         }
                     }.frame(maxHeight: 100)
                 }
